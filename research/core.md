@@ -249,7 +249,7 @@
 - **authors**：Kunpeng Liao; Yuexiao Ma; Yisheng Lin; Hualin Zeng; Xiawu Zheng; Rongrong Ji
 - **year / venue/status**：2026，Findings of ACL 2026
 - **arXiv/DOI**：[arXiv:2605.12159](https://arxiv.org/abs/2605.12159)；DOI 未确认
-- **code/project**：[项目/代码页](https://algenlab.github.io/algogen/)、[ACL Anthology](https://aclanthology.org/2026.findings-acl.156/)
+- **code/project**：[代码](https://github.com/MAC-AutoML/ALGOGEN-lab)（原项目页 https://algenlab.github.io/algogen 于 2026-10-27 返回 404）、[ACL Anthology](https://aclanthology.org/2026.findings-acl.156/)
 - **task**：从算法题生成可靠、可验证的算法可视化视频。
 - **representation**：LLM 生成 Python tracker → VTA-JSON 5.0 执行轨迹；另生成 RSL 风格规范；确定性编译到 Manim/TikZ/Three.js。
 - **method**：把“算法执行”与“布局渲染”解耦；schema 验证、参考实现对比、多后端渲染。
@@ -345,6 +345,40 @@
 - **limitations**：单一系统/模型家族、无真人偏好研究、规模小；首轮 11–1 改写胜利被位置偏差夸大；工程论文结论不宜外推为普遍 SOTA。
 - **relevance tier**：A（代码渲染视频与程序级持续改进的直接案例）。
 - **证据来源**：[paper-tool 全文对应 arXiv](https://arxiv.org/html/2610.14495v1)、[代码](https://github.com/agentic-loops-x/Reels-RSI)
+
+### A20. TeachMaster: Generative Teaching via Code
+
+- **authors**：Yuheng Wang; Runde Yang; Lin Wu; Jie Zhang; Jingru Fan; Tianle Zhou; Ruoyu Fu; Huatao Li; Ruijie Shi; Siheng Chen; Weinan E; Chen Qian
+- **year / venue/status**：2026，ACL 2026（arXiv v1 2025-12-07，v2 2026-04-25）
+- **arXiv/DOI**：[arXiv:2601.04204](https://arxiv.org/abs/2601.04204)；DOI 未确认
+- **code/project**：[项目页](https://www.teachmaster.cn/)；截止日未找到公开代码仓
+- **task**：课程主题/讲义到带旁白的完整教学视频。
+- **representation**：教学计划、Manim Python 场景脚本、TTS 旁白与时间对齐信息。
+- **method**：Planning → Design → Rendering 多智能体流水线；双引擎代码生成（Gemini-3 或针对 Manim 优化的本地 Qwen3-32B）；Minimax TTS，并按语速做音画时间对齐。
+- **feedback/verifier**：Quality Validation 阶段专门处理执行不稳定、时间错位与布局问题。
+- **dataset**：未发布独立 benchmark。
+- **evaluation**：视频质量、生产成本、真实用户部署反馈。
+- **main finding**：作者报告成本约为传统课程视频制作的 0.3%，说明“代码即教学视频”在部署规模上可行。
+- **limitations**：成本与质量均为作者部署报告；缺少公开代码与独立 benchmark 对比。
+- **relevance tier**：A（模型生成 Manim 程序并渲染为教学视频）。
+- **证据来源**：[arXiv](https://arxiv.org/abs/2601.04204)、[项目页](https://www.teachmaster.cn/)
+
+### A21. OmniLottie: Generating Vector Animations via Parameterized Lottie Tokens
+
+- **authors**：Yiying Yang; Wei Cheng; Sijin Chen; Honghao Fu; Xianfang Zeng; Yujun Cai; Gang Yu; Xingjun Ma
+- **year / venue/status**：2026，CVPR 2026
+- **arXiv/DOI**：[arXiv:2603.02138](https://arxiv.org/abs/2603.02138)；DOI 未确认
+- **code/project**：[GitHub](https://github.com/OpenVGLab/OmniLottie)（Apache-2.0）· [项目页](https://openvglab.github.io/OmniLottie/)
+- **task**：Text / Text+Image / Video → 可编辑 Lottie 矢量动画。
+- **representation**：Lottie JSON，经 Lottie tokenizer 转为“命令 + 参数”token（形状、动画函数、控制参数）。
+- **method**：在预训练 VLM 上扩展 Lottie 词表，支持多模态交错指令；发布 MMLottie-2M 训练数据与 MMLottieBench。
+- **feedback/verifier**：解析/渲染有效性；五级失败分类（规范、结构、渲染、管线、输入依赖）。
+- **dataset**：[MMLottie-2M](https://huggingface.co/datasets/OmniLottie/MMLottie-2M)、[MMLottieBench](https://huggingface.co/datasets/OmniLottie/MMLottieBench)。
+- **evaluation**：自动指标、用户研究、与 GPT-5 / Recraft / 优化式方法对比。
+- **main finding**：作者报告三类任务成功率 97.3% / 92.0% / 90.7%；残余失败主要是结构与渲染层面，而非 JSON 规范错误。
+- **limitations**：受 tokenizer 支持的 Lottie 特性子集限制；输入越复杂失败率越高。
+- **relevance tier**：A（训练模型直接输出时间语义矢量动画程序）。
+- **证据来源**：[arXiv HTML 全文](https://arxiv.org/html/2603.02138v1)、[代码](https://github.com/OpenVGLab/OmniLottie)
 
 ## 4. 核心支撑论文、Benchmark 与 Verifier（Tier B）
 
@@ -484,6 +518,57 @@
 - **relevance tier**：B+（代码渲染是核心中间表征，但最终结果仍含像素生成）。
 - **证据来源**：[arXiv HTML 全文](https://arxiv.org/html/2607.27380v2)、[代码](https://github.com/micky-li-hd/VideoCoCo)
 
+### B9. VibeVideoBench: Evaluating Multimodal Agents on Code-Driven Video Generation
+
+- **authors**：Muxi Diao; Wenbin Xu; Lele Yang; Xuyang Ma; Yuzhe Chen; Jiankang Chen; Kaiyu Jiang; Changyi Liu; Haoyu Zhang; Hongyi Fu; Jianxiong Wang; Tianke Zhang; Haonan Fan; Yingxin Li; Bingyi Li; Xu Wang; Xuanyu Zheng; Bin Wen; Tingting Gao; Han Li; Wentao Zhang; Weiran Xu; Kongming Liang; Zhanyu Ma
+- **year / venue/status**：2026，arXiv 预印本（2026-10-26）
+- **arXiv/DOI**：[arXiv:2610.35864](https://arxiv.org/abs/2610.35864)；DOI 未确认
+- **code/project**：[项目页](https://vibevideobench.github.io/)（CC BY 4.0；GitHub 标注 coming soon）
+- **task**：端到端 agent 在 1 小时内交付带声音的 MP4；239 个中英双语任务、12 类。
+- **representation**：agent 自选 Manim、Remotion、Three.js、HTML、Python 等。
+- **method**：Claude Code、Codex、Gemini CLI 等在原生 harness 与 Docker 沙箱中运行。
+- **feedback/verifier**：程序检查 → 约 13k 条 rubric 检查 → 5 个质量维度 → 3 个 VLM 评审团 → 盲人偏好。
+- **dataset**：VibeVideoBench；9 个前沿 agent 系统、2,151 次 rollout。
+- **evaluation**：核心需求通过率、rubric 得分、质量维度、评审一致性、人类偏好。
+- **main finding**：最强系统仍约在 1/4 任务上未满足核心需求；约 3/4 的失分视频源于最终渲染启动过晚、过慢或从未启动——“时间预算管理”是 agent 的主要瓶颈。不同评审在系统排名上一致，但在单个视频上仅中等一致。
+- **limitations**：非常新的预印本；代码尚未发布；单视频评分需谨慎解读。
+- **relevance tier**：B（直接面向 code-driven video 的 agent benchmark）。
+- **证据来源**：[arXiv](https://arxiv.org/abs/2610.35864)、[项目页](https://vibevideobench.github.io/)
+
+### B10. Code Video Model: Conditioning Video Generation on Code
+
+- **authors**：Code Video Model Team（Microsoft Research；个人作者列表未在一手页面列出）
+- **year / venue/status**：2026，技术报告
+- **arXiv/DOI**：无 arXiv；[Tech report PDF](https://code-video-model.github.io/tech_report.pdf)
+- **code/project**：[GitHub](https://github.com/code-video-model/CodeVideoModel)（Apache-2.0）· [项目页](https://code-video-model.github.io/) · [CodeVideoBench](https://huggingface.co/datasets/code-video-model/CodeVideoBench)
+- **task**：文本到写实视频，代码作为可执行 previs。
+- **representation**：LLM 生成 Three.js 程序（场景、物体、相机、按方程计算的动力学），渲染 proxy video + reference image（<1 分钟）。
+- **method**：预训练视频模型以 proxy video 与参考图为条件，采用 training-free early-step conditioning。
+- **feedback/verifier**：proxy 渲染预览；可直接修改代码精确控制每个元素。
+- **dataset**：CodeVideoBench。
+- **evaluation**：多 VLM 评审下的 CodeVideoBench overall。
+- **main finding**：作者报告在三种评审下 overall 均高于 VACE 基线；应用覆盖游戏、场景编辑、世界模型数据、物理、bullet time 与 3D/4D 重建。
+- **limitations**：最终像素仍来自生成模型，渲染不再确定，可能重新引入幻觉；无同行评审，benchmark 与评审均由作者定义。
+- **relevance tier**：B+（与 VideoCoCo 同属 code→pixel 混合系统）。
+- **证据来源**：[项目页](https://code-video-model.github.io/)、[代码](https://github.com/code-video-model/CodeVideoModel)
+
+### B11. VisPhyWorld: Probing Physical Reasoning via Code-Driven Video Reconstruction
+
+- **authors**：Jiarong Liang; Max Ku; Ka-Hei Hui; Ping Nie; Wenhu Chen
+- **year / venue/status**：2026，arXiv 预印本
+- **arXiv/DOI**：[arXiv:2602.13294](https://arxiv.org/abs/2602.13294)；DOI 未确认
+- **code/project**：[GitHub](https://github.com/TIGER-AI-Lab/VisPhyWorld)（MIT）· [项目页](https://tiger-ai-lab.github.io/VisPhyWorld/)
+- **task**：物理视频 → 可执行仿真代码重建，用以探测 MLLM 物理推理。
+- **representation**：Three.js + Cannon.js、P5.js、SVG、Manim 等后端。
+- **method**：MLLM 观察视频后生成程序并迭代自修复；比较不同渲染后端。
+- **feedback/verifier**：执行、重试修复、render-back 对比。
+- **dataset**：VisPhyBench，108 个模板生成 209 个场景（2D 来自 PhyWorld/PHYRE，3D 为 Three.js + Cannon.js）。
+- **evaluation**：重建有效率、视觉相似度、物理一致性。
+- **main finding**：97.7% 重建视频可有效渲染，但物理后端（Three.js/P5.js）明显比 SVG/Manim 更一致；模型难以推断物理参数。
+- **limitations**：仅合成刚体场景；作者尝试的 Unreal/Blender 后端不稳定。
+- **relevance tier**：B（逆向 video→code，与 PhySimCode / 4DCodeBench 同组）。
+- **证据来源**：[arXiv](https://arxiv.org/abs/2602.13294)、[代码](https://github.com/TIGER-AI-Lab/VisPhyWorld)
+
 ## 5. 排除或仅作邻近参考的工作
 
 | 工作/类别 | 处理 | 原因 |
@@ -496,6 +581,7 @@
 | VideoCoCo | B | Blender 代码只产生草稿，最终写实视频还经过生成式视频编辑器。 |
 | InternSVG 的静态理解/编辑/生成子任务 | X | 只有其动态 SANI 子任务纳入；静态 SVG 不属于视频。 |
 | Paper2Video 等只生成讲稿、幻灯片或素材拼接的系统 | X，除非可证明生成可执行视觉程序 | “生成视频脚本”不等于“生成可执行代码”。 |
+| Paper2Video / PaperTalker（arXiv:2510.05096） | 邻近 | LLM 生成 Beamer LaTeX 幻灯片并编译，但时间维度来自 TTS、光标与 talking-head 合成，而非可执行动画程序；作为 paper-to-video 评测参照收录。 |
 | Manim for STEM Education: Visualizing Complex Problems Through Animation | X | 展示人工使用 Manim 的教育案例，不是模型自动生成 Manim 代码。 |
 | Scene/asset-only Blender code generation（如纯 text-to-3D asset） | X | 无时间程序和视频输出时不满足边界。 |
 

@@ -385,7 +385,7 @@
 - [BlendHarness](https://github.com/cccky0813/BlendHarness)：headless Blender sandbox、Coder/Critic/Verifier、错误作为 observation、结构 diff、成本与步骤预算。
 - [blender-agent-studio](https://github.com/ifBars/blender-agent-studio)：可编辑 `.blend` 与 Python，多视图检查、重新打开文件验证导出持久性。
 - [blenderwright](https://github.com/HoldMyBeer-gg/blenderwright)：MCP 工具、快速 viewport feedback、mesh quality report、auto-critique；默认限制 raw Python。
-- [better-blender-mcp](https://github.com/marlonka/better-blender-mcp)：强调 build–inspect–repair–rerender 与证据回传。
+- better-blender-mcp（marlonka）：强调 build–inspect–repair–rerender 与证据回传；原仓库于 2026-10-27 已不可访问，已从资源目录移除。
 - [LLM-Blender-Agent](https://github.com/saofund/LLM-Blender-Agent)：function calling 驱动 Blender 自动化。
 - [LLMUnity](https://github.com/undreamai/LLMUnity)：Unity 内本地/远程 LLM、RAG 与角色交互；偏 NPC，但可作为 Unity agent 通信层。
 

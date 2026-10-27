@@ -102,6 +102,13 @@
 - **限制**：依赖现有 SVG；主要是 CSS 支持的刚性 transform 与关键帧；不是自动质量优化算法，用户研究也不衡量开放域生成性能。
 - **为何相关**：提供重要 HCI 结论：动画需求天然难以一次说清，系统应保存连续编辑上下文、对象引用和参数级控制。
 
+### C12. OmniLottie: Generating Vector Animations via Parameterized Lottie Tokens
+
+- **元数据**：Yiying Yang, Wei Cheng, Sijin Chen, Honghao Fu, Xianfang Zeng, Yujun Cai, Gang Yu, Xingjun Ma；2026；CVPR 2026；[arXiv:2603.02138](https://arxiv.org/abs/2603.02138)；[代码](https://github.com/OpenVGLab/OmniLottie)；[项目页](https://openvglab.github.io/OmniLottie/)。
+- **主要发现**：把 Lottie JSON 的形状、动画函数与控制参数编码为“命令 + 参数”token，接入预训练 VLM，支持文本、图像、视频交错条件生成可编辑矢量动画；发布 MMLottie-2M 与 MMLottieBench。作者报告 text / text+image / video → Lottie 成功率 97.3% / 92.0% / 90.7%。
+- **限制**：受 tokenizer 支持的 Lottie 特性子集约束；五级失败分类显示残余失败主要在结构与渲染层，且随输入复杂度上升。
+- **为何相关**：与 LottieGPT 构成 Lottie 程序生成的两条训练路线，是矢量动画 tokenization 的直接对照。
+
 ---
 
 ## 3. Adjacent：视觉程序生成，可迁移到视频

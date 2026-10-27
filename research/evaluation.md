@@ -60,6 +60,8 @@
 | **Code2Video / MMMC** | 13 个学科的专业 Manim 教学视频；Planner–Coder–Critic | VLM-as-Judge 美学/结构、生成时间、token 成本、TeachQuiz 知识迁移；scope-guided auto-fix 与视觉 anchor critic | 可迁移到教育/解释视频；适合测 execution feedback、视觉 critique 和教学效用 | 领域集中于教学；TeachQuiz 依赖 VLM unlearning/再学习流程，需额外校准 | [论文](https://arxiv.org/abs/2510.01174) · [代码/数据](https://github.com/showlab/Code2Video) · [项目页](https://showlab.github.io/Code2Video/) [S5] |
 | **ManimTrainer / ManimAgent** | 17 个开源 sub-30B 模型、9 种训练/推理组合；ManimBench | Render Success Rate、代码指标、SSIM、CLIP 视觉相似；Renderer-in-the-loop（RITL）和文档增强 RITL-DOC | 直接用于 renderer feedback、自我修复、API 文档反馈的 ablation | 指标仍偏参考相似；不等同通用创意质量，且应独立复验其训练数据与环境 | [论文](https://arxiv.org/abs/2604.18364) · [实现](https://github.com/SuienS/manim-fine-tune-v1) [S6] |
 | **ManimBench-v1** | Manim 代码—自然语言描述对 | 可用于训练/评测文本到 Manim 代码与渲染成功 | 可补充 Manim 数据和 code/visual 双评测 | 数据卡所述范围有限；需做数据泄漏、许可证和版本清理 | [数据卡](https://huggingface.co/datasets/SuienR/ManimBench-v1) [S7] |
+| **VibeVideoBench** | 239 个中英双语端到端任务、12 类；agent 在 Docker 沙箱内 1 小时交付带声音 MP4 | 程序检查、约 13k rubric、5 个质量维度、3 个 VLM 评审团、盲人偏好；2,151 次 rollout | 首个以原生 coding-agent harness 为对象的 code-driven video benchmark；时间预算与渲染调度可直接复用 | 代码尚未发布；单视频层面评审一致性中等 | [论文](https://arxiv.org/abs/2610.35864) · [项目页](https://vibevideobench.github.io/) |
+| **VisPhyBench (VisPhyWorld)** | 108 模板 / 209 场景；物理视频 → 可执行仿真代码 | 重建有效率（97.7%）、视觉相似、物理一致性；多后端对比 | 逆向物理推理与后端选择（Three.js/P5.js vs SVG/Manim）的对照实验 | 仅合成刚体场景 | [论文](https://arxiv.org/abs/2602.13294) · [代码](https://github.com/TIGER-AI-Lab/VisPhyWorld) |
 
 ### 3.1 直接资源给出的关键经验
 
