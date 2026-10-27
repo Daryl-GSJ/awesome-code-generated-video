@@ -1,0 +1,36 @@
+name: 问题报告
+description: 报告数据、文档、图表或自动化中的可复现问题
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题范围
+      options:
+        - 数据或 schema
+        - 文档或链接
+        - 图表或分析
+        - CI / 自动化
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 请说明实际结果、预期结果及受影响文件或记录 ID。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 复现步骤或证据
+      description: 提供最小复现步骤、命令输出或可核验 URL；请勿粘贴凭证。
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 环境（如适用）
+      placeholder: OS、Python 版本、提交 SHA

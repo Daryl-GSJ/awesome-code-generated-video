@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:awesome-code-generated-video:schema:papers:1.0.0",
+  "title": "awesome-code-generated-video papers",
+  "type": "object",
+  "required": ["schema_version", "last_verified", "papers"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string"},
+    "last_verified": {"type": "string", "format": "date"},
+    "papers": {"type": "array", "items": {"$ref": "#/$defs/paper"}}
+  },
+  "$defs": {
+    "nullableUrl": {"oneOf": [{"type": "string", "format": "uri", "pattern": "^https://"}, {"type": "null"}]},
+    "paper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id","title","year","authors","venue","status","paper_url","code_url","project_url","relevance","representation","generation","feedback","task","dataset","evaluation","findings","limitations","source_brief","last_verified"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "year": {"oneOf": [{"type": "integer", "minimum": 1900, "maximum": 2100}, {"type": "null"}]},
+        "authors": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "venue": {"type": ["string", "null"]},
+        "status": {"type": ["string", "null"]},
+        "paper_url": {"$ref": "#/$defs/nullableUrl"},
+        "code_url": {"$ref": "#/$defs/nullableUrl"},
+        "project_url": {"$ref": "#/$defs/nullableUrl"},
+        "relevance": {"enum": ["core", "support", "adjacent", "background"]},
+        "representation": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "generation": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "feedback": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "task": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "dataset": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "evaluation": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "findings": {"type": ["string", "null"]},
+        "limitations": {"type": ["string", "null"]},
+        "source_brief": {"type": "array", "items": {"enum": ["research/core.md", "research/vector_web.md", "research/3d_agents.md", "research/evaluation.md"]}, "minItems": 1, "uniqueItems": true},
+        "last_verified": {"type": "string", "format": "date"}
+      }
+    }
+  }
+}

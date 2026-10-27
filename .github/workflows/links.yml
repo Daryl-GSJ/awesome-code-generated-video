@@ -1,0 +1,38 @@
+name: Check documentation links
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check external links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --verbose
+            --no-progress
+            --max-retries 3
+            --retry-wait-time 2
+            --timeout 20
+            --accept 200,204,206,429
+            --exclude '^https://simworld-ai-code4scene\.static\.hf\.space/'
+            --exclude '^https://anvil\.labs\.jb\.gg/'
+            README.md
+            README.zh-CN.md
+            taxonomy.md
+            analysis.md
+            research-gaps.md
+            CONTRIBUTING.md

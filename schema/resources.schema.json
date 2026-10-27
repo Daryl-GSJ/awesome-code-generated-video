@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:awesome-code-generated-video:schema:resources:1.0.0",
+  "title": "awesome-code-generated-video resources",
+  "type": "object",
+  "required": ["schema_version", "last_verified", "resources"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string"},
+    "last_verified": {"type": "string", "format": "date"},
+    "resources": {"type": "array", "items": {"$ref": "#/$defs/resource"}}
+  },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id","name","type","url","paper_id","description","scope","license","access","source_brief","last_verified"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "name": {"type": "string", "minLength": 1},
+        "type": {"enum": ["dataset", "benchmark", "system", "tool", "showcase"]},
+        "url": {"oneOf": [{"type": "string", "format": "uri", "pattern": "^https://"}, {"type": "null"}]},
+        "paper_id": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "scope": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "license": {"type": ["string", "null"]},
+        "access": {"type": ["string", "null"]},
+        "source_brief": {"type": "array", "items": {"enum": ["research/core.md", "research/vector_web.md", "research/3d_agents.md", "research/evaluation.md"]}, "minItems": 1, "uniqueItems": true},
+        "last_verified": {"type": "string", "format": "date"}
+      }
+    }
+  }
+}

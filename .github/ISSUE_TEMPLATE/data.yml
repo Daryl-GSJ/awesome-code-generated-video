@@ -1,0 +1,46 @@
+name: 论文或资源提议
+description: 提议新增或修正论文、数据集、基准、系统、工具或展示页
+title: "[Data]: "
+labels: ["data"]
+body:
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: 变更类型
+      options:
+        - 新增论文
+        - 新增资源
+        - 修正现有记录
+    validations:
+      required: true
+  - type: input
+    id: primary-source
+    attributes:
+      label: 主要来源
+      description: 请提供论文、正式出版页或官方项目 URL。
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: 纳入理由与建议分级
+      description: 说明其如何生成或支撑可执行的时序视觉程序，并建议 core/support/adjacent/background。
+    validations:
+      required: true
+  - type: textarea
+    id: metadata
+    attributes:
+      label: 已核验元数据
+      description: 列出稳定 ID、标题、作者、年份、代码/项目/数据 URL、许可与核验日期；未知项请明确说明。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 我已搜索 ID、标题和 URL，未发现重复记录。
+          required: true
+        - label: 我已阅读 taxonomy.md，并使用一手或官方来源。
+          required: true
